@@ -227,7 +227,8 @@ var tooltip = d3.select("body").append("div").attr("class", "radar-toolTip");
 	radarsvg.attr("width", width);
 	radarsvg.attr("height",height);
 	zoom.scaleExtent([.9, 8])
-	.translateExtent([[-80, -30], [width, height]]);
+	.translateExtent([[-40, -30], [width, height]]);
+	radarsvg.call(zoom.transform, d3.zoomIdentity.translate(40, 30).scale(0.9))
 	
 	function radarzoom() {
 	  if (d3.event.sourceEvent && d3.event.sourceEvent.type === "radar-chart") return; // ignore zoom-by-brush
