@@ -1,0 +1,32 @@
+.voronoi {
+    width: 1080px;
+    height: 720px;
+    background-image: url("../ucdavismap.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.vor {
+    opacity: 0.5;
+}
+
+.vor:hover {
+    opacity: 0.7;
+}
+
+.lotpoint {
+    pointer-events: none;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 12px;
+    padding: 8px;
+    margin-top: -20px;
+    font: 10px sans-serif;
+    background: #fff;
+    pointer-events: none;
+}

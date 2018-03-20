@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Final Project</title>
+    </head>
+    <body>
+        Permit Type:
+        <select id="permit-select">
+            <option value="TOTAL">All Permits</option>
+            <option value="A">A</option>
+            <option value="C">C</option>
+            <option value="DISABLED">Disabled</option>
+            <option value="METER">Metered</option>
+            <option value="TIMEZONE">Timezone</option>
+            <option value="CARPOOL">Carpool</option>
+            <option value="ELECTRIC">Electric</option>
+            <option value="RESTRICTED">Restricted</option>
+            <option value="MOTORYCYLE">Motorcycle</option>
+        </select>
+        <br>
+        Show Heatmap:
+        <input id="permit-toggle" type="checkbox">
+        <br>
+        <svg id="heatmap-voronoi" class="voronoi"></svg>
+    </body>
+    <script src="./d3/d3.js"></script>
+    <script src="./d3/d3chromatic.js"></script>
+    <script src="./d3/d3color.js"></script>
+    <script src="./d3/d3interpolate.js"></script>
+    <script src="./d3/d3voronoi.js"></script>
+    <script src="./viz/heatmap.js"></script>
+    <script src="./viz/run.js"></script>
+</html>
