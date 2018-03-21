@@ -118,7 +118,7 @@ d3.csv(lotfile, function(error, data) {
         .attr("x", width - margin.right)
         .attr("dy", "1em")
         .attr("text-anchor", "end")
-        .text("Messages: " + num_messages(data, x));
+        .text("Total Lots:"+ getTotalCount(lot) + " Messages: " + num_messages(data, x));
 
   svg.append("text")
         .attr("transform",
@@ -183,4 +183,24 @@ function zoomed() {
   context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
 }
 
+}
+function getTotalCount(lot)
+{
+	console.log(lot)
+	if(lot == "LOT 1")
+	{
+		return 325;
+	}
+	else if( lot == "LOT 2")
+	{
+		return 513;
+	}
+	else if( lot == "LOT 25")
+	{
+		return 603;
+	}
+	else if ( lot == "LOT 56")
+	{
+		return 406;
+	}
 }
