@@ -155,10 +155,17 @@ function DrawVoronoi (lotsPos, dataset, total, max, toggle)
 		.append("circle")
 		.attr("class", "lotpoint")
 		.attr("r", 4)
+		.attr("opacity",1)
 		.attr("cx",function(d){ return d.pos[0]; })
 		.attr("cy",function(d){ return d.pos[1]; })
 		.style('stroke', 'black')
-		.style('fill', 'white');
+		.style('fill', function (d, i) {
+			var col = 'white';
+			if (dataset[i].name == 'LOT 1' || dataset[i].name == 'LOT 2' ||
+				dataset[i].name == 'LOT 25' || dataset[i].name == 'LOT 56')
+				col = 'red';
+			return col;
+		});
 }
 
 function polygon(d) 

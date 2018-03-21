@@ -7,12 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Final Project</title>
 	<style>
-
+	body{
+	}
 	.radar {
-		overflow: hidden;
 		padding-left: -80 px;
 	}
-	
+	.bnz-header{
+		
+		float:none;
+		overflow: visible;
+	}
 	.radar-axis {
 		font: 15px sans-serif;
 	}
@@ -94,20 +98,23 @@
 		<input id="permit-toggle" type="checkbox">
 		<br>
 		
-		<div style="display:inline-block"> 
+		<div > 
 		Select Mode:
 			<input id="vis2" type="checkbox" onchange="uncheck(vis3)" checked> Radar</input>
 			<input id="vis3" type="checkbox" onchange="uncheck(vis2)"> Time Graph</input>
 		</div>
-	</div>
-	<svg id="heatmap-voronoi" class="voronoi"></svg>
-	<div class ="radar">
-	</div>
-	<h3 class ="bnz-header">No Lot selected, change mode to Heatmap then select a Lot on the Map. </h3>
+		<svg id="heatmap-voronoi" class="voronoi"></svg>
+		
+		<div class ="radar">
+		</div>
+	</div> 
+	<div style="position:absolute;left:0px;top:800px">
+	<h3 class ="bnz-header">No Lot selected, change mode to Heatmap then select a Lot marked with a red dot on the Map. 
+	</h3>
 	<p class ="bnz-err"></p>
 	<p class ="brushnzoom">
-		
 	</p>
+	</div>
 </body>
 <g>
 	<script src="./d3.v4.min.js"></script>

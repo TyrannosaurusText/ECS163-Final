@@ -60,7 +60,7 @@ var lotfile ="lot"+lot.substr(4)+".csv"
 d3.csv(lotfile, function(error, data) {
   if(error) 
   {
-	d3.select("body").select(".bnz-err").text("No Data Available for " + lot);
+	d3.select("body").select(".bnz-err").text("No Data Available for " + lot+".\n Select a lot with a Red dot.");
 	d3.select("body").select(".bnz-header").text(lot);
 	return;
 	}
