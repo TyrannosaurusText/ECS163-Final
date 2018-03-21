@@ -56,8 +56,7 @@ var RadarChart = {
 	
 		
 	d3.select(id).select("svg").append("rect")
-    .attr("class", "zoom")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    .attr("class", "zoom");
    
 	var tooltip;
 	g.append("g").attr("class","seg")

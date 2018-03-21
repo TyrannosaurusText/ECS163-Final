@@ -62,34 +62,49 @@
 	.axis > path {
 	  stroke: #888;
 	}
+
 	</style>
 
 </head>
 
 
 <body>
-	Permit Type:
-	<select id="permit-select">
-		<option value="TOTAL">All Permits</option>
-		<option value="A">A</option>
-		<option value="C">C</option>
-		<option value="DISABLED">Disabled</option>
-		<option value="METER">Metered</option>
-		<option value="TIMEZONE">Timezone</option>
-		<option value="CARPOOL">Carpool</option>
-		<option value="ELECTRIC">Electric</option>
-		<option value="RESTRICTED">Restricted</option>
-		<option value="MOTORYCYLE">Motorcycle</option>
-	</select>
-	<br>
-	Show Heatmap:
-	<input id="permit-toggle" type="checkbox">
-	<br>
+	<div id="heatmap-selectors">
+		Permit Type:
+		<select id="permit-select">
+			<option value="TOTAL">All Permits</option>
+			<option value="A">A</option>
+			<option value="C">C</option>
+			<option value="DISABLED">Disabled</option>
+			<option value="METER">Metered</option>
+			<option value="TIMEZONE">Timezone</option>
+			<option value="CARPOOL">Carpool</option>
+			<option value="ELECTRIC">Electric</option>
+			<option value="RESTRICTED">Restricted</option>
+			<option value="MOTORYCYLE">Motorcycle</option>
+		</select>
+		
+		<br>
+		Show Heatmap:
+		<input id="permit-toggle" type="checkbox">
+		<br>
+		
+		<div style="display:inline-block"> 
+		Select Mode:
+			<input id="vis2" type="checkbox" onchange="uncheck(vis3)" checked> Radar</input>
+			<input id="vis3" type="checkbox" onchange="uncheck(vis2)"> Heatmap</input>
+		</div>
+	</div>
 	<svg id="heatmap-voronoi" class="voronoi"></svg>
 	<p class ="radar">
 	</p>
+	<h3 class ="bnz-header">No Lot selected, change mode to Heatmap then select a Lot on the Map. </h3>
+	<p class ="bnz-err"></p>
+	<p class ="brushnzoom">
+		
+	</p>
 </body>
-<p>
+<g>
 	<script src="./d3.v4.min.js"></script>
 	<script src="RadarChart.js"></script>
 	<script src="radar.js"></script>
@@ -100,7 +115,9 @@
 	<script src="./d3/d3voronoi.js"></script>
 	<script src="./viz/heatmap.js"></script>
 	<script src="./viz/run.js"></script>
+	
 	<script src="brushnzoom.js"></script>
-</p>
+
+</>
 
 

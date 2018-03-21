@@ -12,5 +12,8 @@ function MakeHeatmap ()
     document.getElementById('heatmap-voronoi').innerHTML = '';
     heatmap.MakeHeatmap(permit, toggle);
 }
-
+function uncheck(vis)
+{
+	document.getElementById(vis.id).checked=false;
+}
 StartUp();

@@ -142,6 +142,12 @@ function DrawVoronoi (lotsPos, dataset, total, max, toggle)
 		.on("mouseout", function() {
 			return tooltip
 				.style("display", "none");
+		})
+		.on("click", function(d, i) {
+			if(document.getElementById("vis2").checked)
+				radarAddLot(dataset[i].name.trim());
+			else
+				displayLot(dataset[i].name.trim());
 		});
 
 	circles

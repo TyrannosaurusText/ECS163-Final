@@ -1,7 +1,15 @@
 
 
 /* Adapted from: https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d4172 */
-
+var current;
+function displayLot(lot)
+{
+	
+	if(current != lot)
+		d3.select(".brushnzoom").select("svg").remove();
+	else return
+	current = lot;
+    
 var margin = {top: 20, right: 20, bottom: 90, left: 50},
     margin2 = {top: 230, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -29,7 +37,7 @@ var zoom = d3.zoom()
     .extent([[0, 0], [width, height]])
     .on("zoom", zoomed);
 
-var svg = d3.select("body").append("svg").attr("class", "bnz")
+var svg = d3.select(".brushnzoom").append("svg").attr("class", "bnz")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
@@ -48,13 +56,21 @@ var context = svg.append("g")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
 // Data Load from CSV
-d3.csv("lot1.csv", function(error, data) {
-  if(error) throw error;
+var lotfile ="lot"+lot.substr(4)+".csv"
+d3.csv(lotfile, function(error, data) {
+  if(error) 
+  {
+	d3.select("body").select(".bnz-err").text("No Data Available for " + lot);
+	d3.select("body").select(".bnz-header").text(lot);
+	return;
+	}
 
   data.forEach(function(d) {
     d.sent_time = parseTime(d.sent_time);
   });
 
+	d3.select("body").select(".bnz-err").text("");
+	d3.select("body").select(".bnz-header").text(lot);
   var xMin = d3.min(data, function(d) { return d.sent_time; });
   var yMax = Math.max(20, d3.max(data, function(d) { return d.messages_sent_in_day; }));
 
@@ -165,4 +181,6 @@ function zoomed() {
         .attr("cy", function(d) { return y(d.messages_sent_in_day); });
   focus.select(".x-axis").call(xAxis);
   context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
+}
+
 }

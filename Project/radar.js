@@ -7,10 +7,30 @@ var defaultconfig = {
     ExtraWidthX: 300,
     color: d3.scaleOrdinal().range(["#6F257F", "#6AC6FF", "#1AC6FF"])
 }
-radar( ".radar",["LOT 1", "LOT 5", "LOT 10", "LOT 2"], ["A", "C", "METER"])
+var Lots = [];
+var permits = ["A","C","DISABLED","METER","TIMEZONE","CARPOOL","ELECTRIC","RESTRICTED","MOTORCYCLE","OTHER"]
+
+function radarAddLot(lot)
+{
+	if(Lots.includes(lot))
+		Lots.splice(Lots.indexOf(lot),1); //remove lot
+	else
+		Lots.push(lot) // add lot
+	
+	console.log(Lots)
+	if(Lots.length > 0){
+		d3.select(".radar").text("");
+		radar(".radar", Lots, permits, defaultconfig);
+	}
+	else
+		d3.select(".radar").text("No Lots selected, click on the Heat Map to add Lots to the Radar Chart")
+}
+
+d3.select(".radar").text("No Lots selected, change Select Mode to Heat Map then click a lots to the Radar Chart")
 // Example call: radar( ".radarChart",["LOT 1", "LOT 2", "LOT 3", "LOT 4"], ["A", "C", "METER"])
 //Call function to draw the Radar chart
-function radar(id, lots, permits=["A","C","DISABLED","METER","TIMEZONE","CARPOOL","ELECTRIC","RESTRICTED","MOTORCYCLE","TOTAL"],config=defaultconfig)
+
+function radar(id, lots, permits,config=defaultconfig)
 {
 
 	
@@ -98,6 +118,7 @@ function radarfindmax( TwoDeepArray )
 
 	//just converts CSV to JSON for faster processing.
 //only need to call if CSV updates.
+
 function CSV2JSON(csv = "a.csv")
 {
 	d3.csv(csv, function(error, data) {
